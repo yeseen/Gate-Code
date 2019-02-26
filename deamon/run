@@ -3,7 +3,7 @@ import urllib2
 import subprocess
 import time
 from evdev import InputDevice, ecodes
-with open('/home/blake/excursion/yassine/deamon/scannereventfilename.txt') as fevent:
+with open('/home/gate/Gate-Code/deamon/scannereventfilename.txt') as fevent:
 	ss=fevent.read().splitlines()[0]
 	#print(ss)
 #quit()
@@ -24,13 +24,13 @@ for event in dev.read_loop():
 				print(data)
 				print("good RFID!!")
 				if data == 200:
-					with open("/home/blake/excursion/yassine/gatelogs/gate.log", "a") as f:
+					with open("/home/gate/gatelogs/gate.log", "a") as f:
 						f.write(time.strftime("%Y-%m-%d %H:%M:%S")+" "+rfid+"\n")
-					subprocess.call(['/home/blake/excursion/yassine/powerUSBdevice/executable/pwrusbcmd', '0', '0', '1'])
+					subprocess.call(['/home/gate/hs100/hs100.sh', 'on'])
 					subprocess.call(['sleep', '5'])
-					subprocess.call(['/home/blake/excursion/yassine/powerUSBdevice/executable/pwrusbcmd', '0', '0', '0'])
+					subprocess.call(['/home/gate/hs100/hs100.sh', 'off'])
 			except:
 				print("BADDD rfid")
-				with open("/home/blake/excursion/yassine/gatelogs/gate.log", "a") as f:
+				with open("/home/gate/gatelogs/gate.log", "a") as f:
 					 f.write(time.strftime("%Y-%m-%d %H:%M:%S")+" tag "+rfid+" not in system\n")
 			rfid = ""

@@ -1,5 +1,0 @@
-Permissions - 
-	In order to assign read and write permissions for the PowerUSB device copy 99-powerusb.rules file into /etc/udev/rules.d and unplug and re-plug your device.
-
-
-

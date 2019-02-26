@@ -1,1 +1,1 @@
-/dev/input/event7
+/dev/input/event2
